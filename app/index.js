@@ -1,12 +1,18 @@
-import { View, Text } from 'react-native';
+import { View, ScrollView, SafeAreaView} from 'react-native';
+import { Stack, useRouter } from 'expo-router';
+
+import { COLORS, icons, images, SIZES } from '../constants';
+import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome 
+} from '../components';
 
 
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Home() {
+    const router = useRouter();
   return (
-    <View>
+    <SafeAreaView style={{ felx: 1, backgroundColor: COLORS.lightWhite}}>
         <Text>Home</Text>
-    </View>
+    </SafeAreaView>
   )
 }
