@@ -19,6 +19,12 @@ export default function useFetch(endpoint, query) {
     },
   };
 
+  dummyData =[
+    {  job_id: 1, employer_name: 'Lion8', job_title: 'Frontend-developer', job_country: 'USA'},
+    {  job_id: 2, employer_name: 'Inovatec', job_title: 'Backend-developer', job_country: 'Austria'},
+    {  job_id: 3, employer_name: 'Comtrade', job_title: 'Frontend-developer', job_country: 'Germany'},
+  ];
+
   const fetchData = async () => {
     setIsLoading(true);
 
