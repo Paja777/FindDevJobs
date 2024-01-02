@@ -17,7 +17,7 @@ import { dummyData } from '../../../constants/dummyData'
 
 
 const Popularjobs = () => {
-  console.log(dummyData);
+  
   const router = useRouter();
   const isLoading = false;
   const error = false;

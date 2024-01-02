@@ -5,7 +5,7 @@ import { COLORS } from "../../../constants";
 import styles from "./nearbyjobs.style";
 import NearbyJobCard from "../../common/cards/nearby/NearbyJobCard";
 import useFetch from "../../../hook/useFetch";
-import { dummyData } from '../../../constants/dummyData' 
+import { dummyData } from '../../../constants/dummyData';
 
 
 
@@ -17,7 +17,6 @@ const Nearbyjobs = () => {
   //   query: "React developer",
   //   num_pages: 1,
   // });
-  // console.log(data);
 
 
   return (
