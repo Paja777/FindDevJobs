@@ -10,7 +10,7 @@ import styles from '../../styles/search'
 
 const JobSearch = () => {
     const params = useGlobalSearchParams();
-    const router = useRouter()
+    const router = useRouter();
 
     const [searchResult, setSearchResult] = useState([]);
     const [searchLoader, setSearchLoader] = useState(false);

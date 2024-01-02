@@ -40,7 +40,7 @@ export default function Home() {
          handleClick={() => {
             if (searchTerm) {
                 router.push(`/search/${searchTerm}`)
-            }
+              }
          }}   
          />
          <Popularjobs />
