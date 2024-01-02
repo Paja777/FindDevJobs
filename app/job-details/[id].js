@@ -30,18 +30,29 @@ function JobDetails() {
   const params = useGlobalSearchParams();
   const router = useRouter();
 
-  
+  const { data, isLoading, refetch, error } = useFetch("job-details", {
+    job_id: params.id,
+  });
 
-  // const { data, isLoading, refetch, error } = useFetch("job-details", {
-  //   job_id: params.id,
-  // });
-
-  const isLoading = false;
-  const error = false;
+  // const isLoading = false;
+  // const error = false;
   const [refreshing, setRefreshing] = useState(false);
   const [activeTab, setActiveTab] = useState(tabs[0]);
 
   const onRefresh = () => {};
+
+  const displayTabContent = () => {
+    switch (activeTab) {
+      case "Qualifications":
+        return <Specifics title="Qualifications" points={["NA"]} />;
+      case "About":
+        return <JobAbout info={"No data provided"} />;
+      case "Responsibilities":
+        return <Specifics title="Responsibilities" points={["NA"]} />
+      default:
+        break;
+    }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -70,8 +81,8 @@ function JobDetails() {
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
         >
-           {isLoading ? (
-            <ActivityIndicator size='large' color={COLORS.primary} />
+          {isLoading ? (
+            <ActivityIndicator size="large" color={COLORS.primary} />
           ) : error ? (
             <Text>Something went wrong</Text>
           ) : dummyDataDetails.length === 0 ? (
@@ -80,23 +91,24 @@ function JobDetails() {
             <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
               {dummyDataDetails.map((company) => (
                 <Company
-                key={company.job_id}
-                companyLogo={company.employer_logo}
-                jobTitle={company.job_title}
-                companyName={company.employer_name}
-                location={company.job_country}
-              />
+                  key={company.job_id}
+                  companyLogo={company.employer_logo}
+                  jobTitle={company.job_title}
+                  companyName={company.employer_name}
+                  location={company.job_country}
+                />
               ))}
-                
-              <JobTabs 
-              tabs={tabs}
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
+
+              <JobTabs
+                tabs={tabs}
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
               />
+              {displayTabContent()}
             </View>
-            
           )}
         </ScrollView>
+        <JobFooter url={'https://careers.google.com/jobs/results'}/>
       </>
     </SafeAreaView>
   );
